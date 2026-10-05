@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jogo da Senha — desafio de lógica em JavaScript inspirado em um projeto educacional em C.">
+  <title>Jogo da Senha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="background-grid"></div>
+  <div class="ambient-glow"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Jogo da Senha">
+      <span class="brand-mark" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </span>
+      <span>JOGO DA SENHA</span>
+    </a>
+    <button class="new-game" id="newGameBtn" type="button">
+      <span aria-hidden="true">+</span> Nova partida
+    </button>
+  </header>
+
+  <main class="game-layout">
+    <section class="intro">
+      <div class="challenge-label">
+        <span class="label-line"></span>
+        <span>DESAFIO 01</span>
+      </div>
+
+      <h1>Decifre a<br><strong>senha secreta.</strong></h1>
+
+      <p class="lead">
+        Três dígitos. Infinitas possibilidades.<br>
+        Analise as pistas e encontre a combinação.
+      </p>
+
+      <div class="rules">
+        <div class="rule">
+          <span class="rule-number">01</span>
+          <p>A senha tem três dígitos, entre <b>100 e 999</b>.</p>
+        </div>
+        <div class="rule">
+          <span class="rule-number">02</span>
+          <p>A senha tem três dígitos diferentes</b>.</p>
+        </div>
+        <div class="rule">
+          <span class="rule-number">03</span>
+          <p>Cada tentativa revela <b>presença e posição</b>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="game-card" aria-label="Área do jogo">
+      <div class="card-header">
+        <div class="status">
+          <span class="status-dot"></span>
+          <span>PARTIDA EM ANDAMENTO</span>
+        </div>
+        <div class="attempt-counter">
+          <span id="attemptCount">00</span> TENTATIVAS
+        </div>
+      </div>
+
+      <div class="card-body">
+        <label class="input-label" for="digit1">DIGITE SUA TENTATIVA</label>
+
+        <div class="digits" role="group" aria-label="Digite os três dígitos da tentativa">
+          <input id="digit1" class="digit-input" inputmode="numeric" pattern="[0-9]" maxlength="1" aria-label="Primeiro dígito" autocomplete="off">
+          <input id="digit2" class="digit-input" inputmode="numeric" pattern="[0-9]" maxlength="1" aria-label="Segundo dígito" autocomplete="off">
+          <input id="digit3" class="digit-input" inputmode="numeric" pattern="[0-9]" maxlength="1" aria-label="Terceiro dígito" autocomplete="off">
+        </div>
+
+        <button id="tryBtn" class="try-button" type="button">
+          <span>Testar combinação</span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </button>
+
+        <div class="hint">
+          <span class="info-icon" aria-hidden="true">i</span>
+          <span>Digite um número completo, entre 100 e 999.</span>
+        </div>
+
+        <div id="feedback" class="feedback" role="status" aria-live="polite"></div>
+
+        <div id="history" class="history" aria-label="Histórico de tentativas"></div>
+      </div>
+
+      <div class="card-footer">
+        <button id="giveUpBtn" class="give-up" type="button">Desistir e revelar senha</button>
+        <span class="system-code">PASS.GAME_v1.0</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+
+     <span>
+        <p>©2026 AUTORES: Dagoberto Silva · Lariza Fernandes </p>
+    </span>
+
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
