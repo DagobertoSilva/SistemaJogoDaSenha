@@ -61,7 +61,7 @@ function generateSecret() {
 
         value = Math.floor(Math.random() * 900) + 100;
 
-    } while (!hasDifferentDigits(value));
+    } while (!hasDifferentDigits(value) || String(value)[0] === "0");
 
     return String(value);
 }
@@ -376,6 +376,16 @@ function submitGuess() {
     }
 
 
+    
+if (guess[0] === "0") {
+    showFeedback(
+        "O primeiro dígito não pode ser zero.",
+        "danger"
+    );
+
+    return;
+}
+
     /*
     --------------------------------------------------------
     CONTABILIZAR TENTATIVA
@@ -524,6 +534,24 @@ digitInputs.forEach((input, index) => {
         input.value = input.value
             .replace(/\D/g, "")
             .slice(0, 1);
+
+
+
+    /*
+    Impedir zero no primeiro campo.
+    */
+
+    if (index === 0 && input.value === "0") {
+
+        showFeedback(
+            "O primeiro dígito não pode ser zero.",
+            "danger"
+        );
+
+        input.value = "";
+
+        return;
+    }
 
 
         /*
